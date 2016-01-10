@@ -45,10 +45,10 @@ public class Environment {
      * and time when program runs.
      * If program runs when time is between :
      * - [6 a.m. - 9 a.m.) - returns morning`s greeting message;
-     * - [9 a.m. - 19 a.m.) - returns day`s greeting message;
+     * - [9 a.m. - 19 p.m.) - returns day`s greeting message;
      * - [19 p.m. - 23 p.m.) - returns evening`s greeting message;
      * - [23 p.m. - 23.59.59.999 p.m.)  - returns night`s greeting message;
-     * - [0 p.m. - 6 a.m.)  - returns night`s greeting message;
+     * - [0 a.m. - 6 a.m.)  - returns night`s greeting message;
      *
      * @return greeting message
      */

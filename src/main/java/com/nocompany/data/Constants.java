@@ -7,7 +7,7 @@ package com.nocompany.data;
 public class Constants {
 
     /**
-     * This constant define Resource Bundle`s name
+     * This constant defines Resource Bundle`s name
      */
     public static final String MESSAGES_BUNDLE = "MessagesBundle";
 
