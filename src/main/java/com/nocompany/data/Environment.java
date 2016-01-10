@@ -1,5 +1,8 @@
 package com.nocompany.data;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.LocalTime;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -15,6 +18,7 @@ import static java.time.LocalTime.MIDNIGHT;
 import static java.time.LocalTime.MAX;
 
 public class Environment {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
 
     private Locale currentLocale = Locale.getDefault();
 
@@ -32,10 +36,13 @@ public class Environment {
 
 
     public void displayGreeting() {
+        LOGGER.info("Start displayGreeting()");
         System.out.println(chooseGreeting());
+        LOGGER.info("End displayGreeting()");
     }
 
     private String chooseGreeting() {
+        LOGGER.info("Start chooseGreeting()");
         String result = null;
         if (this.getCurrentTime().isAfter(SIX_AM) && this.getCurrentTime().isBefore(NINE_AM)) {
             result = this.getMessagies().getString(MESSAGE_MORNING);
@@ -47,6 +54,7 @@ public class Environment {
                 || this.getCurrentTime().isAfter(MIDNIGHT) && this.getCurrentTime().isBefore(SIX_AM)) {
             result = this.getMessagies().getString(MESSAGE_NIGHT);
         }
+        LOGGER.info("End chooseGreeting(), return message - " + result);
         return result;
     }
 
