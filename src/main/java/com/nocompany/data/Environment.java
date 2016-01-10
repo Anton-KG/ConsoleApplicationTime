@@ -20,7 +20,7 @@ import static java.time.LocalTime.MAX;
 /**
  * This is main class for using this console application.
  * An instance of current class by default contains information about locale (country and language codes)
- * and make receive messages that depends on time locale, by invoking {@link #returnGreeting()}.
+ * and receives messages that depends from local time, by invoking {@link #returnGreeting()}.
  */
 public class Environment {
 
@@ -45,9 +45,9 @@ public class Environment {
      * and time when program runs.
      * If program runs when time is between :
      * - [6 a.m. - 9 a.m.) - returns morning`s greeting message;
-     * - [9 a.m. - 12 a.m.) - returns day`s greeting message;
-     * - [12 p.m. - 19 p.m.) - returns evening`s greeting message;
-     * - [19 p.m. - 23.59.59.999 p.m.)  - returns night`s greeting message;
+     * - [9 a.m. - 19 a.m.) - returns day`s greeting message;
+     * - [19 p.m. - 23 p.m.) - returns evening`s greeting message;
+     * - [23 p.m. - 23.59.59.999 p.m.)  - returns night`s greeting message;
      * - [0 p.m. - 6 a.m.)  - returns night`s greeting message;
      *
      * @return greeting message

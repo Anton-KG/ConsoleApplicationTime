@@ -9,7 +9,7 @@ import java.time.LocalTime;
 import java.util.Locale;
 
 /**
- * This class responsible for testing {@code Environment} class.
+ * This class is responsible for testing {@code Environment} class.
  */
 public class EnvironmentTest {
 
@@ -45,7 +45,7 @@ public class EnvironmentTest {
     private final String MSG_EVENING_RU = "Добрый вечер, Мир!";
     private final String MSG_NIGHT_RU = "Доброй ночи, Мир!";
 
-    //Define time boundaries
+    //Define time`s boundaries
 
     private final LocalTime TIME_MORNING_START = LocalTime.of(6, 0, 0, 0);
     private final LocalTime TIME_DAY_START = LocalTime.of(9, 0, 0, 0);
