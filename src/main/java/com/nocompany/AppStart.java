@@ -10,7 +10,8 @@ public class AppStart {
     public static void main(String[] args) {
         LOGGER.info("Start application");
         Environment env = new Environment();
-        env.displayGreeting();
+        String greeting = env.returnGreeting();
+        System.out.println(greeting);
         LOGGER.info("Exit from application");
     }
 }

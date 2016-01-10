@@ -18,11 +18,12 @@ import static java.time.LocalTime.MIDNIGHT;
 import static java.time.LocalTime.MAX;
 
 public class Environment {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(Environment.class);
 
-    private Locale currentLocale = Locale.getDefault();
+    private Locale currentLocale;
 
-    private ResourceBundle messagies = ResourceBundle.getBundle(MESSAGIES_BUNDLE, getCurrentLocale());
+    private ResourceBundle messagies;
 
     private LocalTime currentTime = now();
 
@@ -34,28 +35,44 @@ public class Environment {
 
     private final LocalTime ELEVEN_PM = of(23, 0, 0, 0);
 
+    public String returnGreeting() {
 
-    public void displayGreeting() {
-        LOGGER.info("Start displayGreeting()");
-        System.out.println(chooseGreeting());
-        LOGGER.info("End displayGreeting()");
-    }
-
-    private String chooseGreeting() {
-        LOGGER.info("Start chooseGreeting()");
+        LOGGER.info("Start returnGreeting()");
         String result = null;
-        if (this.getCurrentTime().isAfter(SIX_AM) && this.getCurrentTime().isBefore(NINE_AM)) {
+
+        //initialize current environment
+        this.initializeEnvironment();
+
+        if ((this.getCurrentTime().equals(SIX_AM)|| this.getCurrentTime().isAfter(SIX_AM)) &&
+                this.getCurrentTime().isBefore(NINE_AM)) {
+
             result = this.getMessagies().getString(MESSAGE_MORNING);
-        } else if (this.getCurrentTime().isAfter(NINE_AM) && this.getCurrentTime().isBefore(SEVEN_PM)) {
+
+        } else if ((this.getCurrentTime().equals(NINE_AM)|| this.getCurrentTime().isAfter(NINE_AM)) &&
+                this.getCurrentTime().isBefore(SEVEN_PM)) {
+
             result = this.getMessagies().getString(MESSAGE_DAY);
-        } else if (this.getCurrentTime().isAfter(SEVEN_PM) && this.getCurrentTime().isBefore(ELEVEN_PM)) {
+
+        } else if ((this.getCurrentTime().equals(SEVEN_PM)|| this.getCurrentTime().isAfter(SEVEN_PM)) &&
+                this.getCurrentTime().isBefore(ELEVEN_PM)) {
+
             result = this.getMessagies().getString(MESSAGE_EVENING);
-        } else if (this.getCurrentTime().isAfter(ELEVEN_PM) && this.getCurrentTime().isBefore(MAX)
-                || this.getCurrentTime().isAfter(MIDNIGHT) && this.getCurrentTime().isBefore(SIX_AM)) {
+
+        } else if ((this.getCurrentTime().equals(ELEVEN_PM)|| this.getCurrentTime().isAfter(ELEVEN_PM)) &&
+                this.getCurrentTime().isBefore(MAX) || (this.getCurrentTime().equals(MIDNIGHT)||
+                this.getCurrentTime().isAfter(MIDNIGHT)) && this.getCurrentTime().isBefore(SIX_AM)) {
+
             result = this.getMessagies().getString(MESSAGE_NIGHT);
         }
-        LOGGER.info("End chooseGreeting(), return message - " + result);
+        LOGGER.info("End returnGreeting(), return message - " + result);
         return result;
+    }
+
+    private void initializeEnvironment(){
+        if(currentLocale == null){
+            currentLocale = Locale.getDefault();
+        }
+        messagies = ResourceBundle.getBundle(MESSAGIES_BUNDLE, getCurrentLocale());
     }
 
     public Locale getCurrentLocale() {
@@ -68,5 +85,17 @@ public class Environment {
 
     public LocalTime getCurrentTime() {
         return currentTime;
+    }
+
+    public void setCurrentLocale(Locale currentLocale) {
+        this.currentLocale = currentLocale;
+    }
+
+    public void setMessagies(ResourceBundle messagies) {
+        this.messagies = messagies;
+    }
+
+    public void setCurrentTime(LocalTime currentTime) {
+        this.currentTime = currentTime;
     }
 }
