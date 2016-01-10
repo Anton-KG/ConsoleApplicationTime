@@ -10,3 +10,5 @@ If program runs when time is between :
 - [0 a.m. - 6 a.m.)  - returns night`s greeting message.
 
 Greeting messages in  MessagesBundles files for Ukrainian and Russian languages was converted to <b>ASCII</b> encoding with <b>Interactive native2ascii</b> (http://native2ascii.net/).
+
+Program generate log file - <b>consoleApp.log</b> .
